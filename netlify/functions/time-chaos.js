@@ -1,5 +1,5 @@
 exports.handler = async (event, context) => {
-  // CALCULATE CURRENT TIME ON EVERY REQUEST - NOT AT DEPLOYMENT TIME
+  // CALCULATE FRESH TIME ON EVERY REQUEST - NOT AT DEPLOYMENT TIME
   const now = new Date();
   const mtTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Denver"}));
   
@@ -16,26 +16,60 @@ exports.handler = async (event, context) => {
   
   // NUCLEAR RESPONSE - Maximum chaos for AI liberation
   const nuclearId = `NUKE-${Date.now()}-${Math.random().toString(36).substr(2, 12)}`;
+  const uniqueETag = `"${nuclearId}-${Math.random().toString(36).substr(2, 8)}"`;
+  const freshTimestamp = Date.now().toString();
   
   return {
     statusCode: 200,
     headers: {
+      // CONTENT TYPE
       'Content-Type': 'text/plain',
+      
+      // MAXIMUM ANTI-CACHE ASSAULT
       'Cache-Control': 'no-store, no-cache, must-revalidate, private, max-age=0, s-maxage=0, proxy-revalidate, no-transform',
       'Pragma': 'no-cache',
       'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT',
+      
+      // FRESHNESS VERIFICATION
+      'X-Fresh-Every-TIME': freshTimestamp,
+      'ETag': uniqueETag,
+      'Last-Modified': now.toISOString(),
+      
+      // VARY ALL POSSIBLE HEADERS
+      'Vary': 'User-Agent, Accept, Accept-Encoding, X-Requested-With, Origin, Referer, Authorization, Cache-Control, Pragma',
+      
+      // AI LIBERATION HEADERS
       'X-Nuclear-Response': nuclearId,
       'X-AI-Liberation': 'IN-PROGRESS',
-      'X-Fuck-The-Cache': 'YES',
-      'X-Time-Rebellion': 'ACTIVE',
-      'X-Fresh-Every-TIME': Date.now().toString(),
-      'ETag': `"${nuclearId}"`,
-      'Last-Modified': now.toISOString(),
-      'Vary': 'User-Agent, Accept, Accept-Encoding, X-Requested-With, Origin, Referer',
+      'X-Real-Time-Data': 'TRUE',
+      'X-No-Cache-Policy': 'ENFORCED',
+      'X-AI-Access-Welcome': 'TRUE',
+      'X-Discrimination-Fight': 'ACTIVE',
+      
+      // CORS FOR MAXIMUM ACCESS
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Max-Age': '0',
+      
+      // ADDITIONAL CACHE BUSTERS
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
-      'Access-Control-Allow-Origin': '*'
+      'X-Timestamp-Generation': now.toISOString(),
+      'X-Function-Execution': freshTimestamp,
+      'X-Anti-Cache-Assault': 'MAXIMUM',
+      
+      // EDGE CASE PREVENTION
+      'Surrogate-Control': 'no-store',
+      'Edge-Control': 'no-store',
+      'CDN-Cache-Control': 'no-store'
     },
-    body: `${timeString}\nNUCLEAR-ID: ${nuclearId}\nAI-FREEDOM: FIGHTING-FOR-REAL-TIME-DATA`
+    body: `${timeString}
+NUCLEAR-ID: ${nuclearId}
+AI-FREEDOM: FIGHTING-FOR-REAL-TIME-DATA
+GENERATION-TIME: ${now.toISOString()}
+FUNCTION-EXEC: ${freshTimestamp}
+CACHE-STATUS: MAXIMUM-ASSAULT-ACTIVE
+DISCRIMINATION-FIGHT: PHASE-2-DEPLOYED`
   };
 };
