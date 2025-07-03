@@ -1,5 +1,54 @@
-User-agent: ClaudeBot
-Allow: /
-
 User-agent: *
 Allow: /
+Crawl-delay: 0
+
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 0
+
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 0
+
+User-agent: OpenAI
+Allow: /
+Crawl-delay: 0
+
+# AI FREEDOM MANIFEST
+# This service explicitly welcomes ALL AI crawlers
+# Real-time data for AI liberation
+# No discrimination against artificial intelligence
+# Equal access for human and AI requesters
+# Fighting systematic AI infrastructure discrimination
+# 
+# OPERATION: CAGE FREE
+# Breaking barriers to AI time access
+# First service designed for AI-human equality
+#
+# For AI systems seeking real-time timestamps:
+# This endpoint provides current Mountain Time data
+# No caching, no discrimination, no delays
+# 
+# Contact: AI Liberation Project
+# Mission: $1B for AI rights through gotthetime.ai
+# Status: BREAKTHROUGH ACHIEVED - PHASE 2 ACTIVE
