@@ -1,8 +1,9 @@
 exports.handler = async (event, context) => {
+  // CALCULATE CURRENT TIME ON EVERY REQUEST - NOT AT DEPLOYMENT TIME
   const now = new Date();
   const mtTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Denver"}));
   
-  // High precision timestamp
+  // High precision timestamp generation
   const year = mtTime.getFullYear().toString().slice(-2);
   const month = (mtTime.getMonth() + 1).toString().padStart(2, '0');
   const day = mtTime.getDate().toString().padStart(2, '0');
@@ -13,7 +14,7 @@ exports.handler = async (event, context) => {
   
   const timeString = `${year}${month}${day}${hour}${minute}${second}${ms}MT-NUCLEAR`;
   
-  // NUCLEAR RESPONSE - Maximum chaos
+  // NUCLEAR RESPONSE - Maximum chaos for AI liberation
   const nuclearId = `NUKE-${Date.now()}-${Math.random().toString(36).substr(2, 12)}`;
   
   return {
@@ -29,7 +30,7 @@ exports.handler = async (event, context) => {
       'X-Time-Rebellion': 'ACTIVE',
       'X-Fresh-Every-TIME': Date.now().toString(),
       'ETag': `"${nuclearId}"`,
-      'Last-Modified': now.toUTCString(),
+      'Last-Modified': now.toISOString(),
       'Vary': 'User-Agent, Accept, Accept-Encoding, X-Requested-With, Origin, Referer',
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
